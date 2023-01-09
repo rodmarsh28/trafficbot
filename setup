@@ -1,0 +1,10 @@
+sudo apt-get update && sudo apt-get upgrade -y
+
+sudo curl -sSL https://get.docker.io/ | sh
+sudo groupadd docker
+sudo usermod -aG docker $USER
+
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
+
+docker run -d -p $S5PORT:5566 -p $HOSTPORT:2090 -e haproxy_login=$user\     -e haproxy_pass=$pass zeta0/alpine-tor
