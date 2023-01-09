@@ -7,4 +7,4 @@ sudo usermod -aG docker $USER
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 
-docker run -d -p $S5PORT:5566 -p $HOSTPORT:2090 -e haproxy_login=$user\     -e haproxy_pass=$pass zeta0/alpine-tor
+docker run -d -p $S5PORT:5566 -p $HOSTPORT:2090 --name torproxy -e haproxy_login=$user\     -e haproxy_pass=$pass zeta0/alpine-tor
